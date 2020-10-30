@@ -85,3 +85,4 @@ plinkfilename = "maize"
 gdata <- Data(plinkfilename)
 optimGRAMMAR (gdata)
 ```
+
