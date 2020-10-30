@@ -68,7 +68,6 @@ Manh<br>        logicals. If TURE, Q-Q plot would be drawn.<br>
 The Grammar function generates a plink association text output file called “Grammar.PHENO1.glm.linear”. Here we show the header and the first five rows of the example output:<br>
 ```
 #CHROM	POS	ID	REF	ALT	A1	TEST	OBS_CT	BETA	SE	T_STAT	P	ERRCODE
-1	8500	S1_8500	G	A	A	ADD	2648	0.0755563	0.188783	0.400227	0.689021	.
 1	10390	S1_10390	G	A	A	ADD	2648	-0.00784112	0.238845	-0.0328293	0.973813	.
 1	10590	S1_10590	T	A	A	ADD	2648	-0.202364	0.249746	-0.810281	0.417852	.
 1	128159	S1_128159	C	T	T	ADD	2648	0.15431	0.215808	0.715033	0.474652	.
