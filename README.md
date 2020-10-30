@@ -48,6 +48,9 @@ msampling<br>  logicals. If FLASE, entire markers will be used to calculate GRM.
 
 ### 3.2 optimGRAMMAR function
 #### Usage
+```
+optimGRAMMAR (Data, maxh2 = 0.5, opsm = 50000, ,Test = c("Separate","Joint") , Scan = c("Plink2","gcta"),QQ = T, Manh = T)
+```
 
 Arguments<br>
 Data<br>        An object class of list from the 1st step.<br>
