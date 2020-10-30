@@ -66,26 +66,16 @@ Manh<br>        logicals. If TURE, Q-Q plot would be drawn.<br>
 ### 4.1 optimGRAMMAR result
 
 The Grammar function generates a plink association text output file called “Grammar.PHENO1.glm.linear”. Here we show the header and the first five rows of the example output:<br>
-
+```
 #CHROM	POS	ID	REF	ALT	A1	TEST	OBS_CT	BETA	SE	T_STAT	P	ERRCODE<br>
 1	8500	S1_8500	G	A	A	ADD	2648	0.0755563	0.188783	0.400227	0.689021	.<br>
 1	10390	S1_10390	G	A	A	ADD	2648	-0.00784112	0.238845	-0.0328293	0.973813	.<br>
 1	10590	S1_10590	T	A	A	ADD	2648	-0.202364	0.249746	-0.810281	0.417852	.<br>
 1	128159	S1_128159	C	T	T	ADD	2648	0.15431	0.215808	0.715033	0.474652	.<br>
 1	128373	S1_128373	C	T	T	ADD	2648	0.033819	0.124565	0.271498	0.78603	.<br>
-…<br>
-
-In addition to the above file, a QTN candidate file, named “QTNs”, with Bonferroni as the threshold is also output. The header and the first five rows are:<br>
-
-#CHROM POS ID REF ALT A1 TEST OBS_CT BETA V2<br>
-1 222963574 S1_222963574 G A A ADD 2648 -0.462216 7.65251920613318<br>
-2 6597140 S2_6597140 T C C ADD 2648 1.16828 17.6731608197186<br>
-2 6597170 S2_6597170 G T T ADD 2648 1.91808 43.6572192493634<br>
-3 165856383 S3_165856383 T C C ADD 2648 0.489627 7.28229257925678<br>
-3 165858424 S3_165858424 G A A ADD 2648 -0.642925 11.2704149095184<br>
-…<br>
-
-If joint analysis, a file, named “jointQTNs”, will display candidate QTNs resulting from joint analysis, which is the same format as “QTNs”.
+…
+```
+In addition to the above file, a QTN candidate file, named “QTNs”, with Bonferroni as the threshold is also output. If joint analysis, a file, named “jointQTNs”, will display candidate QTNs resulting from joint analysis, which is the same format as “QTNs”.
 
 
 
