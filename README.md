@@ -63,9 +63,8 @@ QQ<br>          logicals. If TURE, Q-Q plot would be drawn.<br>
 Manh<br>        logicals. If TURE, Q-Q plot would be drawn.<br>
 
 ## 4. Output
-### 4.1 optimGRAMMAR result
 
-The Grammar function generates a plink association text output file called “Grammar.PHENO1.glm.linear”. Here we show the header and the first five rows of the example output:<br>
+The **optimGRAMMAR** function generates a plink association text output file called “Grammar.PHENO1.glm.linear”. Here we show the header and the first five rows of the example output:<br>
 ```
 #CHROM	POS	ID	REF	ALT	A1	TEST	OBS_CT	BETA	SE	T_STAT	P	ERRCODE
 1	10390	S1_10390	G	A	A	ADD	2648	-0.00784112	0.238845	-0.0328293	0.973813	.
@@ -75,8 +74,14 @@ The Grammar function generates a plink association text output file called “Gr
 ```
 In addition to the above file, a QTN candidate file, named “QTNs”, with Bonferroni as the threshold is also output. If joint analysis, a file, named “jointQTNs”, will display candidate QTNs resulting from joint analysis, which is the same format as “QTNs”.
 
-
-
-
-
-
+## 5. Example
+```
+library(optimGRAMMAR)
+library(BEDMatrix)
+library(data.table)
+pathdata<-"/Users/songyuxin/Desktop/CFWmice_binary"
+setwd(pathdata)
+plinkfilename = "maize"
+gdata <- Data(plinkfilename)
+optimGRAMMAR (gdata)
+```
