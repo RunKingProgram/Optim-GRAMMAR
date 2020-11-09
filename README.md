@@ -4,11 +4,11 @@
 
 ### 1.1	Downloading OptimGRAMMAR
 
-OptimGRAMMAR can be downloaded https://github.com/YuxinSong-prog/OptimGRAMMAR. It can be installed as a regular R package.
+OptimGRAMMAR can be downloaded from https://github.com/YuxinSong-prog/OptimGRAMMAR. It can be installed as a regular R package.
 
 ### 1.2	Installing OptimGRAMMAR
 
-OptimGRAMMAR links to R packages Rcpp, RcppEigen and RcppArmadillo, and also imports R packages BEDMatrix and data.table. These dependencies should be installed before installing OptimGRAMMAR. In addition, OptimGRAMMAR **requires PLINK2.0 Software (http://www.cog-genomics.org/plink/2.0/) with name “plink2.0” under your run directory**. Here is an example for installing OptimGRAMMAR and all its dependencies in an R session(assuming none of the R packages other than the default has been installed):
+OptimGRAMMAR links to R packages Rcpp, RcppEigen, RcppArmadillo, BEDMatrix and data.table. These dependencies should be installed before installing OptimGRAMMAR. In addition, OptimGRAMMAR **requires PLINK2.0 Software (http://www.cog-genomics.org/plink/2.0/) with name “plink2.0” under your working directory**. Here is an example for installing OptimGRAMMAR and all its dependencies in an R session(assuming none of the R packages other than the default has been installed):
 ```
 install.packages(c("BEDMatrix ", " data.table ", "Rcpp", " RcppEigen ", " RcppArmadillo "), repos = "https://cran.r-project.org/")
 system(“R CMD install OptimGRAMMAR _1.0.tgz”)
@@ -35,17 +35,20 @@ and then loading "BEDMatrix "and " data.table " <br>
 library(BEDMatrix)
 library(data.table)
 ```
-We provide two functions in OptimGRAMMAR: **Data** function for basic data management including extract phenotypic values, sampling markers, calculating allele frequencies and GRM, saved in an external file and **optimGRAMMAR** function for association tests using optimGRAMMAR method, joint analysis based on the results of optimGRAMMAR, and outputting association result file then drawing Q-Q and Manhattan plot .
+We provide two functions in OptimGRAMMAR: **Data** function for basic data management including extract phenotypic values, sampling markers, calculating allele frequencies and GRM and **optimGRAMMAR** function for association tests using optimGRAMMAR method, joint analysis based on the results of optimGRAMMAR, and outputting association result files.
 
 ### 3.1 Data function
 #### Usage
 ```
 Data (filename, nsmar, msampling)
 ```
-Arguments<br>
-filename<br>    An object class of character: the filename before the suffix of plink files. The three plink file must have a same filename, for example, “filename.bed”, “filename.bim” and “filename.bam”.<br>
-nsmar<br>     An optional numeric for the number of sampling markers. If this is unset, the “nsmar” default is 5,000.<br>
-msampling<br>  logicals. If FLASE, entire markers will be used to calculate GRM. If this is unset or for large scale dataset, the “msampling” default is TURE.<br>
+#### Arguments
+#### filename
+An object class of character: the filename of PLINK BED files. The three PLINK files must have the same filename, for example, “filename.bed”, “filename.bim” and “filename.bam”.
+#### nsmar
+An optional numeric for the number of sampling markers. If this is unset, the “nsmar” default is 5,000.
+#### msampling
+logicals. If FLASE, entire markers will be used to calculate GRM. If this is unset or for large scale dataset, the “msampling” default is TURE.<br>
 
 ### 3.2 optimGRAMMAR function
 #### Usage
@@ -53,19 +56,25 @@ msampling<br>  logicals. If FLASE, entire markers will be used to calculate GRM.
 optimGRAMMAR (Data, maxh2 = 0.5, opsm = 50000, ,Test = c("Separate","Joint") , Scan = c("Plink2","gcta"),QQ = T, Manh = T)
 ```
 
-Arguments<br>
-Data<br>        An object class of list from the 1st step.<br>
-maxh2<br>       Upper limit of polygenic heritability, which is set by default at 0.5.<br>
-opsm<br>        The total number of SNPs used for optimization, which is set by  default at 50000.<br>
-AssoTst<br>     You can choose correlation analysis software “GCTA” or “PLINK2.0” as prefer, “PLINK2.0” by default.<br>
-Test<br>        An optional for association test, a test at once or joint analysis. You can choose “Separate” for a 
-            test at once and “Joint” for further joint analysis based on the result of “Separate”.<br>
-QQ<br>          logicals. If TURE, Q-Q plot would be drawn.<br>
-Manh<br>        logicals. If TURE, Q-Q plot would be drawn.<br>
+#### Arguments
+#### Data
+An object class of list generated from the **Data** function.
+#### maxh2
+Upper limit of polygenic heritability, which is set by default at 0.5.
+#### opsm
+The total number of SNPs used for optimization, which is set by  default at 50000.
+#### AssoTst
+You can choose correlation analysis software “GCTA” or “PLINK2.0” as prefer, “PLINK2.0” by default.
+#### Test
+An optional for association test, a test at once or the joint analysis. You can choose “Separate” for a test at once and “Joint” for further joint analysis based on the result of “Separate”.
+#### QQ
+logicals. If TURE, Q-Q plot would be drawn.
+#### Manh
+logicals. If TURE, Q-Q plot would be drawn.
 
 ## 4. Output
 
-The **optimGRAMMAR** function generates a plink association text output file called “Grammar.PHENO1.glm.linear”. Here we show the header and the first five rows of the example output:<br>
+The **optimGRAMMAR** function generates a plink association text output file called “Grammar.PHENO1.glm.linear”. Here we show the header and the first 3 rows of the example output:<br>
 
 CHROM|	POS|	ID|	REF|	ALT|	A1|	TEST|	OBS_CT|	BETA|	SE|	T_STAT|	P|	ERRCODE
 ---- | ----- | ------ | ------| ------| ------| ------| ------| ------| ------| ------| ------| ------
@@ -81,9 +90,8 @@ In addition to the above file, a QTN candidate file, named “QTNs”, with Bonf
 library(optimGRAMMAR)
 library(BEDMatrix)
 library(data.table)
-pathdata<-"/Users/songyuxin/Desktop/CFWmice_binary"
-setwd(pathdata)
-plinkfilename = "maize"
+setwd("./example")
+plinkfilename <- "geno"
 gdata <- Data(plinkfilename)
 optimGRAMMAR (gdata)
 ```
