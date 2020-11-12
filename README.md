@@ -4,7 +4,7 @@
 
 ### 1.1	Downloading OptimGRAMMAR
 
-OptimGRAMMAR can be downloaded from https://github.com/YuxinSong-prog/OptimGRAMMAR. It can be installed as a regular R package.
+OptimGRAMMAR can be downloaded from https://github.com/RunKingProgram/OptimGRAMMAR. It can be installed as a regular R package.
 
 ### 1.2	Installing OptimGRAMMAR
 
